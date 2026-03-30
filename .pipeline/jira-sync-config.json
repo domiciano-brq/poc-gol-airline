@@ -1,0 +1,79 @@
+{
+  "sync_date": "2026-03-30",
+  "project": {
+    "key": "KAN",
+    "name": "kanban gol",
+    "cloud_id": "6ada5b32-f313-475d-a367-57bb73a51580",
+    "url": "https://testes-brq.atlassian.net"
+  },
+  "branch": "us-pegue-os-3-cards-ativos-no-jira-e-resolv",
+  "cards": [
+    {
+      "key": "KAN-2",
+      "title": "Criar models de Voo, Passageiro e Reserva",
+      "status": "pending_review",
+      "target_status": "in_analysis",
+      "comment": "Implementação concluída. Criados models Django: Voo (numero, origem, destino, data_partida, data_chegada, capacidade, status), Passageiro (nome, cpf unique, email unique, telefone, data_nascimento) e Reserva (FK Voo, FK Passageiro, assento, status, data_reserva). Migrations e Admin registrados. Branch: us-pegue-os-3-cards-ativos-no-jira-e-resolv",
+      "files_created": [
+        "voos/models.py",
+        "voos/migrations/0001_initial.py",
+        "voos/admin.py"
+      ]
+    },
+    {
+      "key": "KAN-3",
+      "title": "Criar API REST de consulta de voos disponíveis",
+      "status": "pending_review",
+      "target_status": "in_analysis",
+      "comment": "API REST implementada com Django REST Framework. Endpoints: GET /api/voos/ (com filtros ?origem=, ?destino=, ?data=) e GET /api/voos/{id}/. VooViewSet, VooSerializer, roteamento via DefaultRouter. Documentação em docs/API.md. Branch: us-pegue-os-3-cards-ativos-no-jira-e-resolv",
+      "files_created": [
+        "voos/serializers.py",
+        "voos/views.py",
+        "voos/urls.py",
+        "docs/API.md"
+      ]
+    },
+    {
+      "key": "KAN-4",
+      "title": "Configurar Docker e docker-compose para ambiente de desenvolvimento",
+      "status": "pending_review",
+      "target_status": "in_analysis",
+      "comment": "Docker configurado. Criados Dockerfile (python:3.11-slim + gunicorn) e docker-compose.yml (serviços web + db postgres:15). Settings.py atualizado para DATABASE_URL via dj-database-url. .env.example atualizado. Branch: us-pegue-os-3-cards-ativos-no-jira-e-resolv",
+      "files_created": [
+        "Dockerfile",
+        "docker-compose.yml",
+        "gol_airline/settings.py",
+        ".env.example",
+        "requirements.txt"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "type": "get_transitions",
+      "description": "Obter transições disponíveis para cada card"
+    },
+    {
+      "type": "transition_issue",
+      "description": "Transicionar cada card para status 'Em análise'"
+    },
+    {
+      "type": "add_comment",
+      "description": "Adicionar comentário explicativo em cada card"
+    }
+  ],
+  "validation_checklist": {
+    "KAN-2": {
+      "transition_executed": false,
+      "comment_added": false
+    },
+    "KAN-3": {
+      "transition_executed": false,
+      "comment_added": false
+    },
+    "KAN-4": {
+      "transition_executed": false,
+      "comment_added": false
+    }
+  }
+}

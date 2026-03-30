@@ -1,0 +1,90 @@
+================================================================================
+                    JIRA SYNC REPORT - 2026-03-30
+                    Projeto: KAN (kanban gol)
+================================================================================
+
+STATUS: PRONTO PARA SINCRONIZAÇÃO
+
+Cloud ID: 6ada5b32-f313-475d-a367-57bb73a51580
+URL: https://testes-brq.atlassian.net
+Branch: us-pegue-os-3-cards-ativos-no-jira-e-resolv
+
+================================================================================
+                            CARDS A ATUALIZAR
+================================================================================
+
+[1] KAN-2: Criar models de Voo, Passageiro e Reserva
+    Status: IMPLEMENTADO
+    Ação: Transicionar para "Em análise" + Adicionar comentário
+
+    Modelos criados:
+    - Voo (numero, origem, destino, data_partida, data_chegada, capacidade, status)
+    - Passageiro (nome, cpf unique, email unique, telefone, data_nascimento)
+    - Reserva (voo_fk, passageiro_fk, assento, status, data_reserva)
+
+    Arquivos: voos/models.py, voos/admin.py, voos/migrations/
+
+
+[2] KAN-3: Criar API REST de consulta de voos disponíveis
+    Status: IMPLEMENTADO
+    Ação: Transicionar para "Em análise" + Adicionar comentário
+
+    API implementada com Django REST Framework:
+    - GET /api/voos/ (com filtros ?origem=, ?destino=, ?data=)
+    - GET /api/voos/{id}/
+    - VooViewSet, VooSerializer, DefaultRouter
+    - Documentação em docs/API.md
+
+    Arquivos: voos/serializers.py, voos/views.py, voos/urls.py, docs/API.md
+
+
+[3] KAN-4: Configurar Docker e docker-compose para ambiente de desenvolvimento
+    Status: IMPLEMENTADO
+    Ação: Transicionar para "Em análise" + Adicionar comentário
+
+    Docker configurado:
+    - Dockerfile (python:3.11-slim + gunicorn)
+    - docker-compose.yml (web + postgres:15)
+    - Settings.py com DATABASE_URL
+    - .env.example atualizado
+
+    Arquivos: Dockerfile, docker-compose.yml, .env.example, requirements.txt
+
+================================================================================
+                         OPERAÇÕES NECESSÁRIAS
+================================================================================
+
+Para cada card (KAN-2, KAN-3, KAN-4):
+
+1. OBTER TRANSIÇÕES DISPONÍVEIS
+   Comando: getTransitionsForJiraIssue(issueKey)
+   Identificar transição para "Em análise" / "In Review"
+
+2. EXECUTAR TRANSIÇÃO
+   Comando: transitionJiraIssue(issueKey, transitionId)
+
+3. ADICIONAR COMENTÁRIO
+   Comando: addCommentToJiraIssue(issueKey, commentText)
+   Ver comentários específicos em .pipeline/jira-sync.md
+
+================================================================================
+                       CHECKLIST DE VALIDAÇÃO
+================================================================================
+
+[ ] KAN-2: Transição executada + Comentário adicionado
+[ ] KAN-3: Transição executada + Comentário adicionado
+[ ] KAN-4: Transição executada + Comentário adicionado
+
+================================================================================
+                        ARQUIVOS DE CONFIGURAÇÃO
+================================================================================
+
+.pipeline/jira-sync.md         - Relatório completo com detalhes
+.pipeline/jira-sync-config.json - Configuração em JSON para automação
+.pipeline/SYNC_SUMMARY.txt      - Este arquivo
+
+================================================================================
+Data: 2026-03-30
+Sync ID: jira-sync-20260330-001
+Status: PRONTO PARA SINCRONIZAÇÃO VIA MCP JIRA
+================================================================================
