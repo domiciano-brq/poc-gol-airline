@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "atlassian": {
+      "url": "https://mcp.atlassian.com/v1/mcp",
+      "type": "http",
+      "headers": {
+        "Authorization": "Bearer 712020-4fb6e690-c78d-4229-8298-145de2bc3dbd:an9QFdiAsgYHTB_K:jWMMjexAqenxklV2W5oKzsh2LSpPuqgM"
+      }
+    }
+  }
+}
